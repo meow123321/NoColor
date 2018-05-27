@@ -52,9 +52,9 @@ int main(){
     color = 2;
     for (line = 0; line <= no_vertices; line++){
         for (column = 0; column <= no_vertices; column++){
-            if (adjacency_matrix[line][column] == 1 && adjacency_matrix[line+1][column] == 1)
+            if ((*(*(adjacency_matrix + line) + column) == 1) && (*(*(adjacency_matrix + (line+1))+column) == 1))
                 color++;
-            if (adjacency_matrix[line][column] == 1 && adjacency_matrix[line][column+1] == 1)
+            if ((*(*(adjacency_matrix+line)+column) == 1) && (*(*(adjacency_matrix+line)+(column+1)) == 1))
                 color++;
 
         }
