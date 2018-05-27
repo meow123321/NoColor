@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <time.h>
+#include "Function.h"
 
-int ** generator_matrix(int no_vertices){
+/*int ** generator_matrix(int no_vertices){
     int **adjacency_matrix;
     int line;
     int column;
@@ -25,7 +26,7 @@ int ** generator_matrix(int no_vertices){
 
     return adjacency_matrix;
 
-}
+}*/
 
 int main(){
     int no_vertices = 6;
@@ -49,7 +50,8 @@ int main(){
     }
 
 
-    color = 2;
+  /*
+   color = 2;
     for (line = 0; line <= no_vertices; line++){
         for (column = 0; column <= no_vertices; column++){
             if ((*(*(adjacency_matrix + line) + column) == 1) && (*(*(adjacency_matrix + line+1)+column) == 1))
@@ -60,6 +62,7 @@ int main(){
         }
     }
     printf("Numarul de culori folosite pentru graful respectiv este %d.", color);
+    */
 
 
     for (line = 0; line < no_vertices; line++){
