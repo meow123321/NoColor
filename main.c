@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include "Function.h"
 
-/*int ** generator_matrix(int no_vertices){
+int ** generator_matrix(int no_vertices){
     int **adjacency_matrix;
     int line;
     int column;
@@ -11,7 +12,7 @@
     for (line = 0; line < no_vertices; line++){
         adjacency_matrix[line] = malloc(no_vertices * sizeof(int));
     }
-    srand(time(0));
+    //srand(time(0));
     for (line = 0; line < no_vertices; line++){
         for (column = line; column < no_vertices; column++){
             if (line == column){
@@ -26,7 +27,7 @@
 
     return adjacency_matrix;
 
-}*/
+}
 
 int main(){
     int no_vertices = 6;
@@ -52,11 +53,11 @@ int main(){
 
 
    color = 2;
-    for (line = 0; line <= no_vertices; line++){
-        for (column = 0; column <= no_vertices; column++){
-            if ((*(*(adjacency_matrix + line) + column) == 1) && (*(*(adjacency_matrix + line+1)+column) == 1))
+    for (line = 0; line < no_vertices-1; line++){
+        for (column = 0; column < no_vertices-1; column++){
+            if (adjacency_matrix[line][column] == 1 && adjacency_matrix[line+1][column] == 1)
                 color++;
-            if ((*(*(adjacency_matrix+line)+column) == 1) && (*(*(adjacency_matrix+line)+column+1) == 1))
+            if (adjacency_matrix[line][column] == 1 && adjacency_matrix[line][column+1] == 1)
                 color++;
 
         }
