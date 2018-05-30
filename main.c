@@ -50,7 +50,7 @@ int main(){
     }
 
 
-  /*
+
    color = 2;
     for (line = 0; line <= no_vertices; line++){
         for (column = 0; column <= no_vertices; column++){
@@ -62,7 +62,7 @@ int main(){
         }
     }
     printf("Numarul de culori folosite pentru graful respectiv este %d.", color);
-    */
+
 
 
     for (line = 0; line < no_vertices; line++){
