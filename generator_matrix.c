@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "Function.h"
+#include "Header.h"
 
 int ** generator_matrix(int no_vertices){
     int **adjacency_matrix;

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1527897628 source:c:\users\cristina\desktop\github\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"Header.h"
+
+1527897314 c:\users\cristina\desktop\github\header.h
+

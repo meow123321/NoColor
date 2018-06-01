@@ -34,6 +34,10 @@
 		<Unit filename="Header.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="chromatic_number.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="generator_matrix.c">
 			<Option compilerVar="CC" />
 			<Option target="&lt;{~None~}&gt;" />
