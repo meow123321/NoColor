@@ -7,7 +7,6 @@
     int **adjacency_matrix;
     int line;
     int column;
-
     adjacency_matrix = malloc(no_vertices * sizeof(int*));
     for (line = 0; line < no_vertices; line++){
         adjacency_matrix[line] = malloc(no_vertices * sizeof(int));
@@ -24,9 +23,7 @@
             adjacency_matrix[line][column] = adjacency_matrix[column][line];
         }
     }
-
     return adjacency_matrix;
-
 }*/
 
 int main(){
