@@ -5,18 +5,41 @@
 
 int color_vect[10];
 
-void  chromatic_number(int k){
+int ** generator_matrix(int no_vertices){
     int **adjacency_matrix;
     int line;
     int column;
-    int color=1;
 
-   // color_vect[k]=malloc(sizeof(int));
+    adjacency_matrix = malloc(no_vertices * sizeof(int*));
+    for (line = 0; line < no_vertices; line++){
+        adjacency_matrix[line] = malloc(no_vertices * sizeof(int));
+    }
+
+    srand(time(0));
+    for (line = 0; line < no_vertices; line++){
+        for (column = line; column < no_vertices; column++){
+            if (line == column){
+               adjacency_matrix[line][column] = 0;
+            }else{
+                adjacency_matrix[line][column] = rand() % 2;
+                adjacency_matrix[column][line] = adjacency_matrix[line][column];
+            }
+            adjacency_matrix[line][column] = adjacency_matrix[column][line];
+        }
+    }
+
+    return adjacency_matrix;
+
+}
+
+void  chromatic_number(int **adjacency_matrix, int k){
+    int line;
+
     color_vect[k]=1;
     for(line = 0; line < k; line++){
-        if(adjacency_matrix[line][k]==1 && color_vect[k]!= adjacency_matrix[line]){
+        if(adjacency_matrix[line][k] == 1 && color_vect[k]== color_vect[line]){
           //  color_vect[k]=malloc(sizeof(int));
-            color_vect[k]=adjacency_matrix[line]+1;
+            color_vect[k]=color_vect[line]+1;
         }
     }
 
@@ -47,7 +70,7 @@ int main(){
         adjacency_matrix[line] = malloc(no_vertices * sizeof(int));
     }
 
-    adjacency_matrix = generator_matrix(no_vertices);
+    adjacency_matrix=generator_matrix(no_vertices);
 
    for (line = 0; line < no_vertices; line++){
             printf("\n");
@@ -56,22 +79,24 @@ int main(){
         }
     }
 
-
-   /* color=chromatic_number(adjacency_matrix, no_vertices);
-
     printf("\n");
-    printf("\nThe minimum number of colors needed is %d.", color);
-    */
 
     for(line=0; line < no_vertices; line++){
-        chromatic_number(line);
+        chromatic_number(adjacency_matrix, line);
    }
 
    for(line=0; line<no_vertices; line++){
-    printf("Vertex[%d] = %d", line+1, color_vect[line]);
+    printf("Vertex[%d] = %d\n", line+1, color_vect[line]);
    }
 
+   color = color_vect[0];
+   for(line = 0; line < no_vertices; line++){
+    if(color_vect[line] > color){
+        color = color_vect[line];
+    }
+   }
 
+    printf("\nThe minimum number of colors needed is %d.", color);
 
 
     for (line = 0; line < no_vertices; line++){
