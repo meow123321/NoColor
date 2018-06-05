@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Application 9: The Chromatic Number}
+\author{Dumitru Cristina - Nicoleta }
+\date{June 2018}
+\maketitle
+
+\begin{tabbing}
+\indent{First Year}\\ 
+\indent{Group: C.E.N 1.1 B} \\
+
+\end{tabbing}
+
+
+\begin{document}
+
+\maketitle
+
+
+
+\section{Problem statement}
+Chromatic Number. Implement two different algorithms to determine the minimum number of colours needed to colour each node in an undirected graph, such
+that two adjacent vertex do not have the same colour.
+
+\section{Application Design}
+
+\begin{itemize}
+    
+\item
+The high level architectural overview of the application.
+\end{itemize}
+\begin{itemize}
+  \item The application uses one main function  for resolving the given task and one  auxiliary function called in the main one in order to make the whole program more organized.
+  \end{itemize}
+  \item The main function is represented by :
+  \begin{itemize}
+  \item Data introduction.
+  \item The use of auxiliary functions.
+  \item Display the result.
+  \end{itemize}
+  \item The auxiliary functions are represented by:
+  \begin{itemize}
+   \item The function that generates the random matrix.
+   \item The function that uses a vector to retain the vertices of the graph and color them.
+      \end{itemize}	
+      
+\newpage
+\subsection{Function used and parameters}
+
+\subsubsection{** Matrix generator(int NoVertices)}
+The function creates a random adjacent array and assigns it dynamically to the main function. Because the vertices can not be linked to themselves the main diagonal will be fill with 0 and the rest of the matrix will be generate randomly I used a double pointer to hold the adjacent matrix.
+\subsubsection{Chromatic number(int ** adjacency matrix, int k)}
+Using the global variable color vector witch is given the value 1, because there can not be any color 0, this function will go trough the matrix and check if there are two adjacent vertices having the same color. If they have the current vertex will be colored differently. This functions uses backtracking.
+
+
+\section{Definition} 
+A proper vertex coloring of the Petersen graph with 3 colors, the minimum number possible.
+In graph theory, graph coloring is a special case of graph labeling; it is an assignment of labels traditionally called "colors" to elements of a graph subject to certain constraints. In its simplest form, it is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color; this is called a vertex coloring. Similarly, an edge coloring assigns a color to each edge so that no two adjacent edges share the same color, and a face coloring of a planar graph assigns a color to each face or region so that no two faces that share a boundary have the same color.\\
+\\A coloring of a graph is almost always a proper vertex coloring, namely a labeling of the graph’s vertices with colors such that no two vertices sharing the same edge have the same color. Since a vertex with a loop (i.e. a connection directly back to itself) could never be properly colored, it is understood that graphs in this context are loopless.
+
+
+\linebreak
+
+\section{Pseudocode}
+
+\begin{figure}
+\begin{center}
+\begin{tabbing}
+
+\\MatrixGenerator FUNCTION\\
+MatrixGenerator ($NoVertices$,) \\
+1.\indent{tipToInteger$ AdjacenctMatrix$}\\
+2. \indent{int line, column (0 to $NoVtices$)}\\
+3. \indent{\bf for} \=$line$ < $NoVertices$  \\
+4. \indent  \>{\bf for} \=$column$ < $NoVertices$ \\
+5. \indent  \>\> {\bf if} \=$line$ := $column$  {\bf then}\\
+6. \indent \>\>\> $AdjacencyMatrix[line][column]$ = 0\\
+7. \indent \>\> {\bf else} \\
+8. \indent  \>\>\>  $AdjacencyMatrix[line][column]$ := random(0,1)\\
+9. \indent                  \> $AdjacencyMatrix[column][line]$ := $AdjacencyMatrix[line][column]$\\
+10. \indent{\bf return} $AdjacencyMatrix$\\
+
+\\ChromaticNumber FUNCTION\\
+ChromaticNumber ($AdjacencyMatrix$,$k$) \\
+11. \indent{int $line$(0 to NoVtices)}\\
+12. \indent{\bf for} \=$line$ < $k$  \\
+13. \indent  \>\> {\bf if} \=$AdjacenctMatrix[line][k]$ = 1 and $ColorVector[k]$ = $ColorVector[line]$  {\bf then}\\
+14. \indent \>\>\> $ColorVector[k]$ := $ColorVector[line]+1$\\
+
+\\IN MAIN\\
+15.\indent{int $ AdjacenctMatrix$, $color$}\\
+16. \indent{int  $line$, $column$}  \\
+17. \indent$AdjacencyMatrix[line][column]$ := $MatrixGenerator(NoVertices)$ \\
+18. \indent  {\bf for} \=$line$ :=0 to $NoVertices$ \\
+19. \indent \>{\bf for} \= $column$ := 0 to $NoVertices$\\
+20. \indent \>\> $AdjacencyMatrix[line][column]$ = \\
+21. \indent \>\>\>   \\
+22. \indent  \>\>\> write $AdjacencyMatrix[line][column]$ := random(0,1)\\
+23. \indent{\bf for} \= $line$ = 0 to $NoVertices$ \\
+24. \indent \> ChromaticNumber($AdjacencyMatrix$, $NoVertices$)
+25/. \indent{\bf} \= $line$ = 0 to $NoVertices$ \\
+26. \indent\> write $ColorVector[line]$\\
+27.\indent $color$ := $ColorVector[0]$\\
+28. \indent{\bf for} \= $line$ = 0 to $NoVertices$ \\
+29. \indent\>{\bf if} \= $color$ < $ColorVector[line]$ {\bf then}\\
+30. \indent\>\> $color$ := $ColorVector[line]$\\
+31 \indent write $color$\\
+32. \indent{\bf return} 0\\
+\end{tabbing}
+\caption{Chromatic Number}
+\label{fig_1}
+\end{center}
+\end{figure}
+
+\newpage
+\pagebrake
+
+\section{Conclusions}
+Working on this project was a really unique experience for me, since it was truly a challenge, both in terms of research and understanding of the topic, as well as in the implementation part. I can say that i have learned a lot of new information regarding programming, as well as writing a .tex document, which was absolutely new for me.
+
+
+\linebreak
+\pagebrake
+
+\begin{thebibliography}{9}
+\label{sec_ref}
+
+	\bibitem{Wikipedia}
+	\url{https://en.wikipedia.org/wiki/Graph_coloring}\\
+	\url{https://www.geeksforgeeks.org/graph-coloring-applications/}
+
+
+    \bibitem{latex}
+     \LaTeX project site,
+     \url{http://latex-project.org/}
+
+\end{thebibliography}
+
+
+\end{document}
