@@ -21,7 +21,7 @@ int ** generator_matrix(int no_vertices){
     for (line = 0; line < no_vertices; line++){
         for (column = line; column < no_vertices; column++){
             if (line == column){
-            // we initialize the elements on the main diagonal so the vertices does not have edge with themselves
+            // filling the main diagonal with 0 so the vertices doesn`t have edge with themselves
                adjacency_matrix[line][column] = 0;
             }else{
                 adjacency_matrix[line][column] = rand() % 2;

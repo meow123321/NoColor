@@ -22,7 +22,7 @@ int ** generator_matrix(int no_vertices){
     for (line = 0; line < no_vertices; line++){
         for (column = line; column < no_vertices; column++){
             if (line == column){
-            // we initialize the elements on the main diagonal so the vertices does not have edge with themselves
+            // initializing the elements on the main diagonal so the vertices does not have edge with themselves
                adjacency_matrix[line][column] = 0;
             }else{
                 adjacency_matrix[line][column] = rand() % 2;
@@ -55,7 +55,7 @@ int main(){
     int column;
     int color;
 
-    //we again allocate memory for the matrix of adjacency
+    // allocate again  memory for the matrix of adjacency
     adjacency_matrix = malloc(no_vertices * sizeof(int*));
     for (line = 0; line < no_vertices; line++){
         adjacency_matrix[line] = malloc(no_vertices * sizeof(int));
@@ -63,7 +63,7 @@ int main(){
 
     adjacency_matrix = generator_matrix(no_vertices);
 
-    // we print the adjacency matrix
+    // print the adjacency matrix
     for (line = 0; line < no_vertices; line++){
             printf("\n");
         for (column = 0; column < no_vertices; column++){
@@ -77,7 +77,7 @@ int main(){
     for(line=0; line < no_vertices; line++){
         chromatic_number(adjacency_matrix, line);
    }
-    //we print the colored array
+    // print the colored array
     for(line=0; line<no_vertices; line++){
         printf("Vertex[%d] = %d\n", line+1, color_vect[line]);
    }
